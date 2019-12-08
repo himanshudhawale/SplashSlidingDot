@@ -1,4 +1,4 @@
-package com.example.splashslidingdot;
+package com.example.slidingdot;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -6,7 +6,6 @@ import android.content.res.TypedArray;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 
-import com.google.android.material.tabs.TabLayout;
 
 import androidx.annotation.NonNull;
 
@@ -16,10 +15,10 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.widget.FrameLayout;
 
+import com.google.android.material.tabs.TabLayout;
 
 
 public class SlidingDot extends FrameLayout {
-
 
     private ViewPager mViewPager;
     private ImageViewPagerAdapter mViewPagerAdapter;
@@ -41,7 +40,7 @@ public class SlidingDot extends FrameLayout {
     @SuppressLint("Range")
     private void init(Context context, AttributeSet attrs){
         LayoutInflater.from(context).inflate(R.layout.activity_sliding_dot,this);
-        mViewPager = (ViewPager) findViewById(R.id.pager_splash);
+        mViewPager = findViewById(R.id.pager_splash);
         mViewPagerAdapter = new ImageViewPagerAdapter(context,mOnSetImageListener);
         if(!isInEditMode())
             if(attrs != null){
@@ -62,6 +61,29 @@ public class SlidingDot extends FrameLayout {
         mViewPager.setAdapter(mViewPagerAdapter);
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabDots);
         tabLayout.setupWithViewPager(mViewPager,true);
+    }
+
+
+    public void setImageResources(@NonNull Bitmap[] imageResources){
+        mViewPagerAdapter.setImageResources(imageResources);
+    }
+
+
+
+    public void setOnShowImageListener(OnSetImageListener onShowImageListener){
+        mOnSetImageListener = onShowImageListener;
+    }
+
+    public void setOnItemClickListener(OnItemClickListener onItemClickListener){
+        mViewPagerAdapter.setOnPagerItemClick(onItemClickListener);
+    }
+
+    public void addOnPageChangeListener(ViewPager.OnPageChangeListener onPageChangeListener){
+        mViewPager.addOnPageChangeListener(mOnPageChangeListener = onPageChangeListener);
+    }
+
+    public void removeOnPageChangeListener(){
+        mViewPager.removeOnPageChangeListener(mOnPageChangeListener);
     }
 
 

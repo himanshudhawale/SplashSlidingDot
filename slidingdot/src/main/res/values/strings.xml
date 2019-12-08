@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">SlidingDot</string>
+    <string name="app_name">SplashSlidingDot</string>
+    <string name="title_activity_sliding_dot">SlidingDot</string>
 </resources>

@@ -1,4 +1,4 @@
-package com.example.splashslidingdot;
+package com.example.slidingdot;
 
 import android.widget.ImageView;
 

@@ -1,4 +1,4 @@
-package com.example.splashslidingdot;
+package com.example.slidingdot;
 
 import android.view.View;
 import android.view.ViewGroup;
